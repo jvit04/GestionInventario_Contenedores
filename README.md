@@ -68,7 +68,7 @@ Requisitos previos: Tener instalado Docker, Docker Desktop y Tailscale.
 ## Métricas de Progreso
 | Indicador | Valor |
 | --------- | ----- |
-| Commits totales | 15 |
+| Commits totales | 21 |
 | Issues/PRs fusionados | 0 |
 | Cobertura de pruebas | N/A |
 | Última actualización | 2026-06-12 |
