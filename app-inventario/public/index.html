@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Inventario</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-content">
+      <h1>Gestión de Inventario</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- VISTA: LISTADO -->
+    <section id="vistaListado" class="view active">
+      <div class="page-header">
+        <div>
+          <h2>Productos</h2>
+          <p>Gestión de productos registrados en el inventario.</p>
+        </div>
+
+        <button id="btnMostrarRegistro" class="btn btn-dark">
+          + Registrar producto
+        </button>
+      </div>
+
+<section class="system-card">
+  <div>
+    <h3>Estado del sistema</h3>
+    <p>Verifica que la aplicación y la base de datos estén disponibles.</p>
+  </div>
+
+  <div class="system-actions">
+    <button id="btnHealth" class="btn btn-outline">Probar API</button>
+    <button id="btnHealthDb" class="btn btn-outline">Probar base de datos</button>
+  </div>
+
+  <div id="estadoSistema" class="message"></div>
+</section>
+
+<section class="stats-grid">
+  <article class="stat-card">
+    <span>Productos registrados</span>
+    <strong id="totalProductos">0</strong>
+  </article>
+
+  <article class="stat-card">
+    <span>Valor total del inventario</span>
+    <strong id="valorInventario">$0.00</strong>
+  </article>
+
+  <article class="stat-card">
+    <span>Productos con bajo stock</span>
+    <strong id="bajoStock">0</strong>
+  </article>
+</section>
+
+      <section class="search-card">
+        <input
+          type="text"
+          id="buscarNombre"
+          placeholder="Buscar producto por ID o nombre"
+        />
+
+        <button id="btnBuscar" class="btn btn-outline">Buscar</button>
+        <button id="btnLimpiar" class="btn btn-outline">Limpiar</button>
+      </section>
+
+      <section class="table-card">
+        <div id="mensaje" class="message"></div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaProductos"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <!-- VISTA: REGISTRAR / EDITAR -->
+    <section id="vistaFormulario" class="view">
+      <div class="page-header">
+        <div>
+          <h2 id="tituloFormulario">Registrar producto</h2>
+          <p id="subtituloFormulario">Agrega un nuevo producto al inventario.</p>
+        </div>
+      </div>
+
+      <section class="form-card">
+        <form id="formProducto">
+          <input type="hidden" id="productoId" />
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              placeholder="Ej. Laptop ASUS"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea
+              id="descripcion"
+              placeholder="Ej. Color negro, 8GB RAM"
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cantidad">Cantidad</label>
+              <input
+                type="number"
+                id="cantidad"
+                min="0"
+                placeholder="Ej. 15"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="precio">Precio</label>
+              <input
+                type="number"
+                id="precio"
+                min="0"
+                step="0.01"
+                placeholder="Ej. 150.50"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="btnGuardar" class="btn btn-dark">
+              Guardar producto
+            </button>
+
+            <button type="button" id="btnCancelar" class="btn btn-outline">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </section>
+    </section>
+
+    <!-- VISTA: DETALLE -->
+    <section id="vistaDetalle" class="view">
+      <div class="page-header">
+        <div>
+          <h2>Detalle del producto</h2>
+          <p>Información completa del producto seleccionado.</p>
+        </div>
+      </div>
+
+      <section class="detail-card">
+        <div class="detail-grid">
+          <div>
+            <span>ID</span>
+            <strong id="detalleId">-</strong>
+          </div>
+
+          <div>
+            <span>Nombre</span>
+            <strong id="detalleNombre">-</strong>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="detail-block">
+          <span>Descripción</span>
+          <p id="detalleDescripcion">-</p>
+        </div>
+
+        <div class="detail-grid">
+          <div>
+            <span>Cantidad</span>
+            <strong id="detalleCantidad">-</strong>
+          </div>
+
+          <div>
+            <span>Precio unitario</span>
+            <strong id="detallePrecio">-</strong>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="detail-grid">
+          <div>
+            <span>Fecha de registro</span>
+            <p id="detalleCreatedAt">-</p>
+          </div>
+
+          <div>
+            <span>Última actualización</span>
+            <p id="detalleUpdatedAt">-</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="btnEditarDesdeDetalle" class="btn btn-dark">
+            Editar producto
+          </button>
+
+          <button id="btnVolverDetalle" class="btn btn-outline">
+            Volver
+          </button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

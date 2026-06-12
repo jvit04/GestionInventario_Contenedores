@@ -1,0 +1,15 @@
+# Variables de entorno
+.env
+app-inventario/.env
+
+# Node
+node_modules/
+app-inventario/node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
