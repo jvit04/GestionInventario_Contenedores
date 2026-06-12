@@ -3,59 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Inventario</title>
+    <title>Reportes de Inventario</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 p-8">
-<div class="max-w-6xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-800 mb-8">Panel de Control de Inventario</h1>
+<body class="bg-[#f3f5f7] font-sans">
 
-    <div class="grid grid-cols-2 gap-4 mb-8">
-        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
-            <h2 class="text-gray-500 text-sm uppercase font-bold">Total de Productos Registrados</h2>
-            <p class="text-3xl font-bold text-gray-800"><%= totalProductos %></p>
+<nav class="bg-[#11161c] p-4">
+    <div class="max-w-7xl mx-auto text-white font-bold text-lg">
+        Gestión de Inventario
+    </div>
+</nav>
+
+<div class="max-w-7xl mx-auto p-8">
+    <h1 class="text-4xl font-bold text-gray-900 mb-2">Reportes del Sistema</h1>
+    <p class="text-gray-500 mb-8">Visualización de métricas y estado actual del inventario.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-md border border-gray-200">
+            <h2 class="text-gray-500 text-sm mb-2">Productos registrados</h2>
+            <p class="text-3xl font-bold text-gray-900"><%= totalProductos %></p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
-            <h2 class="text-gray-500 text-sm uppercase font-bold">Valor Total del Inventario</h2>
-            <p class="text-3xl font-bold text-gray-800">$<%= Number(valorInventario).toLocaleString('es-EC', {minimumFractionDigits: 2}) %></p>
+        <div class="bg-white p-6 rounded-md border border-gray-200">
+            <h2 class="text-gray-500 text-sm mb-2">Valor total del inventario</h2>
+            <p class="text-3xl font-bold text-gray-900">$<%= Number(valorInventario).toLocaleString('es-EC', {minimumFractionDigits: 2}) %></p>
         </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-bold text-red-600 mb-4 flex items-center">
-                ⚠️ Alerta de Bajo Stock (< 5 unidades)
-            </h2>
-            <ul>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="bg-white p-6 rounded-md border border-gray-200">
+            <h2 class="text-xl font-bold text-gray-900 mb-4 border-b pb-2">Alerta de bajo stock</h2>
+            <ul class="mt-4 space-y-3">
                 <% if (bajoStock && bajoStock.length > 0) { %>
                     <% bajoStock.forEach(producto => { %>
-                        <li class="border-b py-2 flex justify-between">
-                            <span><%= producto.nombre %></span>
-                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">Quedan <%= producto.cantidad %></span>
+                        <li class="flex justify-between items-center text-sm">
+                            <span class="text-gray-700 font-medium"><%= producto.nombre %></span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-md border border-gray-300">
+                                    <%= producto.cantidad %> unidades
+                                </span>
                         </li>
                     <% }) %>
                 <% } else { %>
-                    <li class="text-gray-500 italic">No hay productos con bajo stock.</li>
+                    <li class="text-gray-500 text-sm">No hay productos con bajo stock.</li>
                 <% } %>
             </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-bold text-gray-800 mb-4">🏆 Top 5 Mayor Valor en Inventario</h2>
-            <ul>
+        <div class="bg-white p-6 rounded-md border border-gray-200">
+            <h2 class="text-xl font-bold text-gray-900 mb-4 border-b pb-2">Mayor valor en inventario</h2>
+            <ul class="mt-4 space-y-3">
                 <% if (topValiosos && topValiosos.length > 0) { %>
                     <% topValiosos.forEach(producto => { %>
-                        <li class="border-b py-2 flex justify-between">
-                            <span><%= producto.nombre %> <span class="text-gray-400 text-sm">(<%= producto.cantidad %> uds)</span></span>
-                            <span class="font-bold text-green-600">$<%= Number(producto.valor_total).toLocaleString('es-EC', {minimumFractionDigits: 2}) %></span>
+                        <li class="flex justify-between items-center text-sm">
+                                <span class="text-gray-700 font-medium">
+                                    <%= producto.nombre %>
+                                    <span class="text-gray-400 ml-1">(<%= producto.cantidad %> uds)</span>
+                                </span>
+                            <span class="font-bold text-gray-900">
+                                    $<%= Number(producto.valor_total).toLocaleString('es-EC', {minimumFractionDigits: 2}) %>
+                                </span>
                         </li>
                     <% }) %>
                 <% } else { %>
-                    <li class="text-gray-500 italic">No hay productos registrados.</li>
+                    <li class="text-gray-500 text-sm">No hay productos registrados.</li>
                 <% } %>
             </ul>
         </div>
     </div>
 </div>
+
 </body>
 </html>
