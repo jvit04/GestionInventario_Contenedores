@@ -1,7 +1,12 @@
 ﻿# Gestion de Inventario con Docker y Tailscale
 # Sistema de Inventario Distribuido - Backend y Reportes
+El presente proyecto tiene como objetivo el diseño y despliegue de un Sistema de Inventario Distribuido, orientado a resolver las necesidades de gestión de productos de una pequeña empresa. Este sistema ha sido desarrollado bajo un enfoque de microservicios utilizando contenerización, lo que permite que los distintos componentes del software operen de manera independiente, y en hardware físicamente separado.
 
-Materia: Sistemas Distribuidos | Periodo: 2026-1 | Estado: Completado
+Cada servicio independendiente esta dentro de este repositorio dividido en las siguientes ramas: 
+1. `app-inventario`: Servicio que gestiona el CRUD del inventario de productos.
+2. `database-report`: Servicio que recibe los cambios en la base y despliega mediante una interfaz simple el reporte de inventario.
+
+**Materia:** Sistemas Distribuidos | Periodo: 2026-1 | Estado: Completado
 
 ## Equipo de trabajo
 - Leonor Molina - Estudiante 1: Aplicación de Gestión ([Leomz21](https://github.com/Leomz21))
