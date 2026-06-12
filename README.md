@@ -20,7 +20,7 @@ Cada servicio independendiente esta dentro de este repositorio dividido en las s
 
 ## Funcionalidad
 - [x] **Base de Datos Aislada:** Contenedor de PostgreSQL inicializado con script `.sql` y persistencia de datos mediante volúmenes de Docker [a13f7738c2689c74814844436b9bdb9f619cbdf5](https://github.com/jvit04/GestionInventario_Contenedores/commit/a13f7738c2689c74814844436b9bdb9f619cbdf5).
-- [x] **Red Privada Virtual:** Integración con Tailscale para recibir conexiones remotas seguras en el puerto 5433 desde el nodo del Estudiante 1 [09881fc81a564bd8eaa600f0f3bd28f703f4beb2].
+- [x] **Red Privada Virtual:** Integración con Tailscale para recibir conexiones remotas seguras en el puerto 5433 desde el nodo del Estudiante 1 [09881fc81a564bd8eaa600f0f3bd28f703f4beb2](https://github.com/jvit04/GestionInventario_Contenedores/commit/09881fc81a564bd8eaa600f0f3bd28f703f4beb2).
 - [x] **Panel de Reportes Web:** Interfaz generada con Node.js y EJS que muestra el valor total del inventario y el Top 5 de productos más valiosos [[8790f3d14b463ba88e52acc78a49d2836230cfd1](https://github.com/jvit04/GestionInventario_Contenedores/commit/8790f3d14b463ba88e52acc78a49d2836230cfd1)].
 
 
