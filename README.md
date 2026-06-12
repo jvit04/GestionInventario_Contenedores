@@ -31,6 +31,21 @@ Cada servicio independendiente esta dentro de este repositorio dividido en las s
 ## Ejecución
 ### Instrucciones paso a paso
 Requisitos previos: Tener instalado Docker, Docker Desktop y Tailscale.
-1. Paso 1: Instrucciones para clonar los repositorios.
-2. Paso 2 (Dispositivo 2): Comando para levantar la base de datos y reportes (docker-compose up -d --build).
-3. Paso 3 (Dispositivo 1): Configuración del .env con la IP de Tailscale y comando para levantar la app de gestión. 
+1. Clonar el repositorio.
+2. Levantar la base de datos y reportes (docker-compose up -d --build).
+3. El panel de reportes estará disponible en http://localhost:8000.
+4. Para detener el sistema usar: docker-compose down.
+
+## Métricas de Progreso
+| Indicador | Valor |
+| --------- | ----- |
+| Commits totales | 15 |
+| Issues/PRs fusionados | 0 |
+| Cobertura de pruebas | N/A |
+| Última actualización | 2026-06-12 |
+
+## Reflexión y Aprendizajes
+- **Habilidades desarrolladas:** Orquestación de contenedores, configuración de redes virtuales VPN para microservicios.
+- **Qué funcionó bien:** Decisión estrategica de cambiar la arquitectura a Node.js + Express en vez de laravel, ya que esto resultó en un entorno más ligero y redujo drásticamente la fricción al integrar la base de datos distribuida con Tailscale. 
+- **Qué se podría mejorar:** Automatizar el respaldo de la base de datos o implementar un sistema de login para el panel de reportes.
+- **Conceptos clave aplicados de la materia:** Contenerización y Sistemas Distribuidos.
