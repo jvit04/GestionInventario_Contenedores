@@ -16,7 +16,36 @@ Cada servicio independendiente esta dentro de este repositorio dividido en las s
 
 
 ## Capturas / Demo
-![Dashboard de Reportes](docs/screenshots/dashboard.png)
+
+### Panel de Reportes - Estudiante 2
+
+<img src="docs/screenshots/dashboard.png" width="900">
+
+### Aplicación de Gestión de Inventario - Estudiante 1
+
+#### Listado principal de productos
+
+<img src="docs/screenshots/app-listado.png" width="900">
+
+#### Registro de producto
+
+<img src="docs/screenshots/app-registro.png" width="900">
+
+#### Detalle de producto
+
+<img src="docs/screenshots/app-detalle.png" width="900">
+
+#### Edición de producto
+
+<img src="docs/screenshots/app-edicion.png" width="900">
+
+#### Eliminación de producto
+
+<img src="docs/screenshots/app-eliminar.png" width="900">
+
+#### Contenedor Docker de la aplicación
+
+<img src="docs/screenshots/app-docker.png" width="900">
 
 ## Funcionalidad
 - [x] **Base de Datos Aislada:** Contenedor de PostgreSQL inicializado con script `.sql` y persistencia de datos mediante volúmenes de Docker [a13f7738c2689c74814844436b9bdb9f619cbdf5](https://github.com/jvit04/GestionInventario_Contenedores/commit/a13f7738c2689c74814844436b9bdb9f619cbdf5).
